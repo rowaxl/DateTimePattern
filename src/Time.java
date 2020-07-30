@@ -1,34 +1,29 @@
+import java.util.InputMismatchException;
+
 public abstract class Time implements Displayable {
     protected int hour;
     private int minutes;
     private int seconds;
-    protected boolean isValid = true;
 
-    public void setHour(int hour) {
+    public void setHour(int hour) throws InvalidInputException {
         if (hour < 0 || hour > 23) {
-            System.out.println("Hour should be between 0 ~ 23");
-            isValid = false;
-            return;
+            throw new InvalidInputException("Hour should be between 0 ~ 23");
         }
 
         this.hour = hour;
     }
 
-    public void setMinutes(int minutes) {
+    public void setMinutes(int minutes) throws InvalidInputException {
         if (minutes < 0 || minutes > 60) {
-            System.out.println("Minutes should be between 0 ~ 59");
-            isValid = false;
-            return;
+            throw new InvalidInputException("Minutes should be between 0 ~ 59");
         }
 
         this.minutes = minutes;
     }
 
-    public void setSeconds(int seconds) {
+    public void setSeconds(int seconds) throws InvalidInputException {
         if (seconds < 0 || seconds > 60) {
-            System.out.println("Seconds should be between 0 ~ 59");
-            isValid = false;
-            return;
+            throw new InvalidInputException("Seconds should be between 0 ~ 59");
         }
 
         this.seconds = seconds;
@@ -46,7 +41,7 @@ public abstract class Time implements Displayable {
         return seconds;
     }
 
-    public Time(int hour, int minutes, int seconds) {
+    public Time(int hour, int minutes, int seconds) throws InvalidInputException {
         setHour(hour);
         setMinutes(minutes);
         setSeconds(seconds);

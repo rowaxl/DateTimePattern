@@ -1,5 +1,5 @@
 public class TimeWithTwelveHours extends Time {
-    public TimeWithTwelveHours(int hour, int minutes, int seconds) {
+    public TimeWithTwelveHours(int hour, int minutes, int seconds) throws InvalidInputException {
         super(hour, minutes, seconds);
     }
 
@@ -22,13 +22,11 @@ public class TimeWithTwelveHours extends Time {
 
     @Override
     public void display() {
-        if (this.isValid) {
-            System.out.printf("%s:%s:%s %s\n",
-                    formatNumbers(getHour()),
-                    formatNumbers(getMinutes()),
-                    formatNumbers(getSeconds()),
-                    getAMPM()
-            );
-        }
+        System.out.printf("%s:%s:%s %s\n",
+            formatNumbers(getHour()),
+            formatNumbers(getMinutes()),
+            formatNumbers(getSeconds()),
+            getAMPM()
+        );
     }
 }

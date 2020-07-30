@@ -1,14 +1,27 @@
+import java.util.InputMismatchException;
 
 public class Driver {
     public static void main(String[] args) {
-        Date d = new Date(1, 12, 1991);
+        try {
+            Date d = new Date(41, 11, 1991);
+            d.display();
+        } catch (InvalidInputException e) {
+            System.out.println(e.getMessage());
+        }
 
-        d.display();
 
-        TimeWithTwelveHours tt = new TimeWithTwelveHours(13, 5, 59);
-        tt.display();
+        try {
+            TimeWithTwelveHours tt = new TimeWithTwelveHours(23, 0, 59);
+            tt.display();
+        } catch (InvalidInputException e) {
+            System.out.println(e.getMessage());
+        }
 
-        TimeWithTwentyfourHour tf = new TimeWithTwentyfourHour(3, 10, 9);
-        tf.display();
+        try {
+            TimeWithTwentyfourHour tf = new TimeWithTwentyfourHour(3, 10, 99);
+            tf.display();
+        } catch (InvalidInputException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
